@@ -18,15 +18,13 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 # Syntax
-pd.cut(series, interval, right,label)
+pd.cut(series, interval, right=True,label)
 ------------------
 
-[0;31m[0m
-[0;31mNameError[0mTraceback (most recent call last)
-[0;32m<ipython-input-6-5d025f95780b>[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;31m# Syntax[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0mpd[0m[0;34m.[0m[0mcut[0m[0;34m([0m[0mseries[0m[0;34m,[0m [0minterval[0m[0;34m,[0m [0mright[0m[0;34m,[0m[0mlabel[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;31mNameError[0m: name 'series' is not defined
-NameError: name 'series' is not defined
+[0;36m  File [0;32m"<ipython-input-6-71a191df9c2d>"[0;36m, line [0;32m2[0m
+[0;31m    pd.cut(series, interval, right=True,label)[0m
+[0m                                       ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m positional argument follows keyword argument
+
+SyntaxError: positional argument follows keyword argument (<ipython-input-6-71a191df9c2d>, line 2)
 

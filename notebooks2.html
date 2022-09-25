@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tugas 3" href="notebooks3.html" />
     <link rel="prev" title="Tugas 1" href="notebooks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -121,6 +122,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Tugas 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks3.html">
+   Tugas 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks4.html">
+   Tugas 4
   </a>
  </li>
 </ul>
@@ -367,7 +378,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3">
+  <div id="df-64022697-2142-41fb-b2a3-c9a90576d239">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -632,7 +643,7 @@ title="Print to PDF"
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-64022697-2142-41fb-b2a3-c9a90576d239')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -683,12 +694,12 @@ title="Print to PDF"
 
       <script>
         const buttonEl =
-          document.querySelector('#df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3 button.colab-df-convert');
+          document.querySelector('#df-64022697-2142-41fb-b2a3-c9a90576d239 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3');
+          const element = document.querySelector('#df-64022697-2142-41fb-b2a3-c9a90576d239');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -743,17 +754,15 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Syntax</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">5</span><span class="n">d025f95780b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Syntax</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;series&#39; is not defined
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-6-71a191df9c2d&gt;&quot;</span><span class="gt">, line </span><span class="mi">2</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+                                       <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
 </pre></div>
 </div>
 </div>
@@ -812,6 +821,13 @@ title="Print to PDF"
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Tugas 1</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="notebooks3.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tugas 3</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
