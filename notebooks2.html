@@ -333,14 +333,446 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tugas-2">
 <h1>Tugas 2<a class="headerlink" href="#tugas-2" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p>CARI DATA YANG BERTIPE NUMERIK (DATA KLASIFIKASI)</p></li>
+<li><p>LAKUKAN PROSES DISKRITISASI DENGAN EQUAL WIDTH DAN EQUAL FREQUENCY</p></li>
+<li><p>LAKUKAN PROSES DISKRITISASI DENGAN BASIS ENTROPY</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/Shintaalya/dataset/main/College_Data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello world
+<div class="output text_html">
+  <div id="df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Private</th>
+      <th>Apps</th>
+      <th>Accept</th>
+      <th>Enroll</th>
+      <th>Top10perc</th>
+      <th>Top25perc</th>
+      <th>F.Undergrad</th>
+      <th>P.Undergrad</th>
+      <th>Outstate</th>
+      <th>Room.Board</th>
+      <th>Books</th>
+      <th>Personal</th>
+      <th>PhD</th>
+      <th>Terminal</th>
+      <th>S.F.Ratio</th>
+      <th>perc.alumni</th>
+      <th>Expend</th>
+      <th>Grad.Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abilene Christian University</td>
+      <td>Yes</td>
+      <td>1660</td>
+      <td>1232</td>
+      <td>721</td>
+      <td>23</td>
+      <td>52</td>
+      <td>2885</td>
+      <td>537</td>
+      <td>7440</td>
+      <td>3300</td>
+      <td>450</td>
+      <td>2200</td>
+      <td>70</td>
+      <td>78</td>
+      <td>18.1</td>
+      <td>12</td>
+      <td>7041</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Adelphi University</td>
+      <td>Yes</td>
+      <td>2186</td>
+      <td>1924</td>
+      <td>512</td>
+      <td>16</td>
+      <td>29</td>
+      <td>2683</td>
+      <td>1227</td>
+      <td>12280</td>
+      <td>6450</td>
+      <td>750</td>
+      <td>1500</td>
+      <td>29</td>
+      <td>30</td>
+      <td>12.2</td>
+      <td>16</td>
+      <td>10527</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Adrian College</td>
+      <td>Yes</td>
+      <td>1428</td>
+      <td>1097</td>
+      <td>336</td>
+      <td>22</td>
+      <td>50</td>
+      <td>1036</td>
+      <td>99</td>
+      <td>11250</td>
+      <td>3750</td>
+      <td>400</td>
+      <td>1165</td>
+      <td>53</td>
+      <td>66</td>
+      <td>12.9</td>
+      <td>30</td>
+      <td>8735</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Agnes Scott College</td>
+      <td>Yes</td>
+      <td>417</td>
+      <td>349</td>
+      <td>137</td>
+      <td>60</td>
+      <td>89</td>
+      <td>510</td>
+      <td>63</td>
+      <td>12960</td>
+      <td>5450</td>
+      <td>450</td>
+      <td>875</td>
+      <td>92</td>
+      <td>97</td>
+      <td>7.7</td>
+      <td>37</td>
+      <td>19016</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Alaska Pacific University</td>
+      <td>Yes</td>
+      <td>193</td>
+      <td>146</td>
+      <td>55</td>
+      <td>16</td>
+      <td>44</td>
+      <td>249</td>
+      <td>869</td>
+      <td>7560</td>
+      <td>4120</td>
+      <td>800</td>
+      <td>1500</td>
+      <td>76</td>
+      <td>72</td>
+      <td>11.9</td>
+      <td>2</td>
+      <td>10922</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Albertson College</td>
+      <td>Yes</td>
+      <td>587</td>
+      <td>479</td>
+      <td>158</td>
+      <td>38</td>
+      <td>62</td>
+      <td>678</td>
+      <td>41</td>
+      <td>13500</td>
+      <td>3335</td>
+      <td>500</td>
+      <td>675</td>
+      <td>67</td>
+      <td>73</td>
+      <td>9.4</td>
+      <td>11</td>
+      <td>9727</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Albertus Magnus College</td>
+      <td>Yes</td>
+      <td>353</td>
+      <td>340</td>
+      <td>103</td>
+      <td>17</td>
+      <td>45</td>
+      <td>416</td>
+      <td>230</td>
+      <td>13290</td>
+      <td>5720</td>
+      <td>500</td>
+      <td>1500</td>
+      <td>90</td>
+      <td>93</td>
+      <td>11.5</td>
+      <td>26</td>
+      <td>8861</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Albion College</td>
+      <td>Yes</td>
+      <td>1899</td>
+      <td>1720</td>
+      <td>489</td>
+      <td>37</td>
+      <td>68</td>
+      <td>1594</td>
+      <td>32</td>
+      <td>13868</td>
+      <td>4826</td>
+      <td>450</td>
+      <td>850</td>
+      <td>89</td>
+      <td>100</td>
+      <td>13.7</td>
+      <td>37</td>
+      <td>11487</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Albright College</td>
+      <td>Yes</td>
+      <td>1038</td>
+      <td>839</td>
+      <td>227</td>
+      <td>30</td>
+      <td>63</td>
+      <td>973</td>
+      <td>306</td>
+      <td>15595</td>
+      <td>4400</td>
+      <td>300</td>
+      <td>500</td>
+      <td>79</td>
+      <td>84</td>
+      <td>11.3</td>
+      <td>23</td>
+      <td>11644</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Alderson-Broaddus College</td>
+      <td>Yes</td>
+      <td>582</td>
+      <td>498</td>
+      <td>172</td>
+      <td>21</td>
+      <td>44</td>
+      <td>799</td>
+      <td>78</td>
+      <td>10468</td>
+      <td>3380</td>
+      <td>660</td>
+      <td>1800</td>
+      <td>40</td>
+      <td>41</td>
+      <td>11.5</td>
+      <td>15</td>
+      <td>8991</td>
+      <td>52</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-c1d9b7ba-d1eb-4b02-9466-92211a8937e3');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CONSTAN SERIES</span>
+
+<span class="n">APPS_SERIES</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Apps&quot;</span><span class="p">]</span>
+<span class="n">ACCEPT_SERIES</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Accept&quot;</span><span class="p">]</span>
+<span class="n">ENROLL_SERIES</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Enroll&quot;</span><span class="p">]</span>
+<span class="n">TOP10PERC_SERIES</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Top10perc&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Discretization</strong> adalah proses merubah atribut numerik menjadi atribut kategorikal dengan cara melakukan mapping data tersebut ke dalam interval atau concept label.</p>
+<ul class="simple">
+<li><p>Teknik yang digunakan adalah :</p>
+<ol class="simple">
+<li><p>Binning : proses topdown ini melakukan splitting berdasarkan jumlah bin</p></li>
+<li><p>Histogram analysis: membuat partisi histogram ke dalam bucket atau bins.</p></li>
+<li><p>Cluster analysis : algoritma clustering diaplikasikan ke dalam atribut numerik dan membagi atribut ke dalam kelompok atau cluster.</p></li>
+<li><p>Decision tree anlysisi : teknik ini menentukan sebuah atribut yang memiliki entropi minimum dan kemudian dijadikan splitting point, kemudian secara rekursif melakukan partisi sehingga menghasilkan discretization yang memiliki hirarki</p></li>
+<li><p>Correlation analysis : mencari interval bersebelahan yang terbaik kemudian menggabungkan mereka ke dalam interval yang lebih besar.</p></li>
+</ol>
+</li>
+<li><p>Pendekatan Discretization</p>
+<ol class="simple">
+<li><p>Equal-width intervals adalah discretization yang membagi data numerik menjadi beberapa kelompok dengan lebar kelompok yang kurang lebih sama besar.</p></li>
+<li><p>Equal-frequency intervals adalah discretization yang membagi data numerik menjadi beberapa kelompok dengan jumlah anggota yang kurang lebih sama besar.
+<strong>Cut</strong> adalah sebuah method pada library pandas untuk melakukan perhitungan equal width intervals</p></li>
+</ol>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Syntax</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">5</span><span class="n">d025f95780b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Syntax</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;series&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Sepal Width</strong></p>
+<ul class="simple">
+<li><p>Equal Width Intervals lebar kelopak bunga Iris</p></li>
+<li><p>Dikelompokkan menjadi 3 kategori yaitu kategori sedikit lebar, lebar dan sangat lebar.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># equal-width intervals</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sedikit Lebar&quot;</span><span class="p">,</span> <span class="s2">&quot;Lebar&quot;</span><span class="p">,</span> <span class="s2">&quot;Sangat Lebar&quot;</span><span class="p">]</span>
+<span class="n">amount_of_binning</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="n">sepal_width_ew_binning</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">SEPAL_WIDTH_SERIES</span><span class="p">,</span> <span class="n">amount_of_binning</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">labelled_sepal_width_ew_binning</span> <span class="o">=</span> <span class="n">sepal_width_ew_binning</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">interval_sepal_width_ew_binning</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">SEPAL_WIDTH_SERIES</span><span class="p">,</span> <span class="n">amount_of_binning</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
