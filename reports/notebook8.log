@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/dist-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 664, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.7/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+from sklearn.linear_model import LinearRegression
+X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
+# y = 1 * x_0 + 2 * x_1 + 3
+y = np.dot(X, np.array([1, 2])) + 3
+reg = LinearRegression().fit(X, y)
+reg.score(X, y)
+1.0
+reg.coef_
+array([1., 2.])
+reg.intercept_
+3.0
+reg.predict(np.array([[3, 5]]))
+array([16.])
+------------------
+
+[0;31m[0m
+[0;31mNameError[0mTraceback (most recent call last)
+[0;32m<ipython-input-3-7bf70295ef8d>[0m in [0;36m<module>[0;34m[0m
+[1;32m      8[0m [0;36m1.0[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0mreg[0m[0;34m.[0m[0mcoef_[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 10[0;31m [0marray[0m[0;34m([0m[0;34m[[0m[0;36m1.[0m[0;34m,[0m [0;36m2.[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     11[0m [0mreg[0m[0;34m.[0m[0mintercept_[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     12[0m [0;36m3.0[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'array' is not defined
+NameError: name 'array' is not defined
+
